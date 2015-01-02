@@ -12,4 +12,6 @@ Route::get('logout', 'AuthController@logout');
 Route::group(['before' => 'auth'], function()
 {
 	Route::get('/', 'HomeController@showWelcome');
+
+	Route::get('dash', 'AuthController@showWelcome');
 });

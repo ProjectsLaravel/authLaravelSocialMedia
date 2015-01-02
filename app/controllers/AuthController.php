@@ -1,13 +1,16 @@
 <?php
 class AuthController extends BaseController {
+
   public function showLogin()
   {
     if (Auth::check())
     {
-      return Redirect::to('/');
+      //return Redirect::to('/');
+      return Redirect::to('dash');
     }
     return View::make('login');
   }
+
   public function postLogin()
   {
     $data = [
@@ -16,13 +19,19 @@ class AuthController extends BaseController {
     ];
     if (Auth::attempt($data, Input::get('remember')))
     {
-      return Redirect::intended('/');
+      return Redirect::intended('dash');
     }
     return Redirect::back()->with('error_message', 'Invalid data')->withInput();
   }
+
   public function logout()
   {
     Auth::logout();
     return Redirect::to('login')->with('error_message', 'Logged out correctly');
+  }
+
+  public function showWelcome()
+  {
+    return View::make('auth/dash');
   }
 }
