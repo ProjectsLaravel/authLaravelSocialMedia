@@ -19,7 +19,7 @@ class AuthController extends BaseController {
 
     if (Auth::attempt($data, Input::get('remember')))
     {
-      return View::make('auth/dash');
+      return Redirect::to('dash');
     }
     else{
       return Redirect::back()->with('error_message', 'Invalid data')->withInput();

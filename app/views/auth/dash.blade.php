@@ -111,7 +111,7 @@
 
         <div id="updateUser" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
 
-          <img src="{{Auth::user()->avatar->url('avatar') }}" >
+          <img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" >
 
           {{ Form::open(['route' => 'uploadImage', 'method' => 'POST', 'files' => true,'role' => 'form']) }}
             {{ Form::hidden('id', Auth::user()->id ) }}
