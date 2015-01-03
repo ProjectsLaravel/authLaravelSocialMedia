@@ -6,6 +6,8 @@
 Route::get('login', 'AuthController@showLogin');
 Route::post('login', 'AuthController@postLogin');
 Route::get('logout', 'AuthController@logout');
+Route::get('showRegister', 'AuthController@registerUser'); //show blade new user
+Route::post('sign-up', ['as' => 'register', 'uses' => 'UserController@register' ] );
 
 
 /*private routes only for users auth*/

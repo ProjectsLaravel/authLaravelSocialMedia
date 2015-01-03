@@ -34,4 +34,9 @@ class AuthController extends BaseController {
   {
     return View::make('auth/dash');
   }
+
+  public function registerUser()
+  {
+    return View::make('register');
+  }
 }
