@@ -42,8 +42,49 @@ class UserController extends BaseController {
     return View::make('auth/dash');
   }
 
-  public function update_account()
+  public function showPassRecovery()
   {
+    return View::make('passRecovery');
+  }
+
+  public function sendMailRecovery()
+  {
+    $credentials = array('email' => Input::get('email'));
+    Password::remind($credentials);
+    return Redirect::to('login');
+  }
+
+  public function showResetPass($token)
+  {
+    return View::make('reset')->with('token', $token);
+  }
+
+  public function resetPass()
+  {
+    $credentials = Input::only("email","password","password_confirmation","token");
+
+    $response = Password::reset($credentials, function($user, $password)
+    {
+      //$user->password = Hash::make($password);not is necesary make hash in model user setPasswordAttribute make .it
+      $user->password = $password;
+      $user->save();
+
+      Mail::send('emails.successResetPassword', array('email'=>Input::get('email')), function($message){
+        $message->to(Input::get('email'))->subject('Succes recovery password');
+      });
+
+    });
+
+    switch ($response)
+    {
+      case Password::INVALID_PASSWORD:
+      case Password::INVALID_TOKEN:
+      case Password::INVALID_USER:
+      return Redirect::back()->with('error_message', Lang::get($response));
+
+      case Password::PASSWORD_RESET:
+      return Redirect::to('login');
+    }
 
   }
 

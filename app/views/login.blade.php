@@ -16,7 +16,7 @@
       {{ Session::get('error_message') }}
     </div>
     @endif
-
+    
     <h2 class="form-signin-heading">Log in</h2>
 
     {{ Form::label('username', 'Username', ['class' => 'sr-only']) }}
@@ -35,6 +35,7 @@
 
     {{ Form::close() }}
     <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Create User</a>
+    <a class="btn btn-success" href="{{ action('UserController@showPassRecovery') }}">Forget Password?</a>
   </div>
   <script src="//code.jquery.com/jquery.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

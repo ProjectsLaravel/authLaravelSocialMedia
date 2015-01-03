@@ -5,7 +5,6 @@ class AuthController extends BaseController {
   {
     if (Auth::check())
     {
-      //return Redirect::to('/');
       return Redirect::to('dash');
     }
     return View::make('login');
