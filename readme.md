@@ -12,3 +12,12 @@ php artisan db:seed
 
 php artisan auth:reminders-table
 php artisan migrate
+
+
+/*for add images (avatar to user)*/
+https://github.com/CodeSleeve/laravel-stapler#installation
+
+"codesleeve/laravel-stapler": "1.0.*"
+'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider'
+
+php artisan stapler:fasten users avatar

@@ -88,4 +88,14 @@ class UserController extends BaseController {
 
   }
 
+  public function uploadImage()
+  {
+    $id = Input::get('id');
+    $user = User::find($id);
+    $data = Input::only("avatar");
+    $user->fill($data);
+    $user->save();
+    return View::make('auth/dash');
+  }
+
 }

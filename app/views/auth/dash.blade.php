@@ -110,6 +110,15 @@
         </div>
 
         <div id="updateUser" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
+
+          <img src="{{Auth::user()->avatar->url('avatar') }}" >
+
+          {{ Form::open(['route' => 'uploadImage', 'method' => 'POST', 'files' => true,'role' => 'form']) }}
+            {{ Form::hidden('id', Auth::user()->id ) }}
+            {{ Form::file('avatar') }}
+            <input type="submit" value="Subir imagen" class="btn btn-success">
+          {{ Form::close() }}
+
           {{ Form::open(['route' => 'updateUser', 'method' => 'POST', 'role' => 'form']) }}
 
             {{ Form::hidden('id', Auth::user()->id ) }}
