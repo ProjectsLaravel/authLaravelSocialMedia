@@ -34,7 +34,7 @@
     {{ Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) }}
 
     {{ Form::close() }}
-    <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Register</a>
+    <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Create User</a>
   </div>
   <script src="//code.jquery.com/jquery.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
