@@ -16,4 +16,6 @@ Route::group(['before' => 'auth'], function()
 	Route::get('/', 'HomeController@showWelcome');
 
 	Route::get('dash', 'AuthController@showWelcome');
+
+	Route::post('updateUser', ['as' => 'updateUser', 'uses' => 'UserController@updateUser' ] );
 });
