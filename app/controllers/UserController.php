@@ -14,7 +14,7 @@ class UserController extends BaseController {
 
     if($newUser){
       Auth::login($newUser);
-      return View::make('auth/dash');
+      return Redirect::to('dash');
     }
 
     return Redirect::route('showRegister')->withInput();
