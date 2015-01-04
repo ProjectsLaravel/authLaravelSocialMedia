@@ -98,4 +98,62 @@ class UserController extends BaseController {
     return View::make('auth/dash');
   }
 
+
+
+  public function afterFacebook()
+  {
+    $facebook = new Facebook(Config::get('facebook'));
+    $params = array(
+      'redirect_uri' => url('/login/fb/callback'),
+      'scope' => 'email',
+    );
+    return Redirect::to($facebook->getLoginUrl($params));
+  }
+
+
+  public function loginFacebook()
+  {
+    $code = Input::get('code');
+    if (strlen($code) == 0) return Redirect::to('/')->with('message', 'There was an error communicating with Facebook');
+
+    $facebook = new Facebook(Config::get('facebook'));
+    $uid = $facebook->getUser();
+
+    if ($uid == 0) return Redirect::to('/')->with('message', 'There was an error');
+
+    $me = $facebook->api('/me');
+
+    $profile = Profile::whereUid($uid)->first();
+    if (empty($profile)) {
+
+      $user = new User;
+      $user->first_name = $me['first_name'];
+      $user->last_name = $me['last_name'];
+      $user->username = $me['first_name'];
+      $user->password = $me['first_name'];
+      $user->email = $me['email'];
+      $user->avatar = 'http://graph.facebook.com/'.$me['id'].'/picture';
+
+      $user->save();
+
+      $profile = new Profile();
+      $profile->uid = $uid;
+      $profile->username = $me['first_name'];
+      $profile = $user->profiles()->save($profile);
+
+      /*Mail::send('emails.welcomeFacebook', array('first_name'=>$me['first_name'],'last_name'=>$me['last_name']), function($message){
+        $message->to($me['email'] , $me['first_name'].' '.$me['last_name'])->subject('Welcome to AuthLaravelSocialMedia with Facebook');
+      });*/
+    }
+
+    $profile->access_token = $facebook->getAccessToken();
+    $profile->save();
+
+    $user = $profile->user;
+
+    Auth::login($user);
+
+    return Redirect::to('dash')->with('message', 'Logged in with Facebook');
+  }
+
 }
