@@ -21,3 +21,11 @@ https://github.com/CodeSleeve/laravel-stapler#installation
 'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider'
 
 php artisan stapler:fasten users avatar
+
+
+
+/*Config login social media */
+
+composer require facebook/php-sdk
+php artisan migrate:make create_profiles_table
+php artisan migrate:refresh

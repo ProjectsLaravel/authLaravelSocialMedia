@@ -35,6 +35,10 @@
       {{ Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) }}
 
       {{ Form::close() }}
+      <a class="btn btn-info" href="login/fb">
+        <i class=""></i> Sign in with Facebook
+      </a>
+
       <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Create User</a>
       <a class="btn btn-success" href="{{ action('UserController@showPassRecovery') }}">Forget Password?</a>
     </div>
