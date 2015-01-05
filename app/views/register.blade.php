@@ -5,33 +5,35 @@
   <title>Authenticate with Laravel 4.2</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   {{ HTML::style('assets/css/signin.css') }}
+  <link href="{{ asset('css/helper.css') }}" rel="stylesheet">
 </head>
 <body>
   <div class="container">
     <div class="col-md-4 col-md-offset-4">
-    {{ Form::open(['route' => 'register', 'method' => 'POST', 'role' => 'form']) }}
+      <h2 class="form-signin-heading centerText">Welcome my dear friend</h2>
+      {{ Form::open(['route' => 'register', 'method' => 'POST', 'role' => 'form']) }}
 
-      {{ Form::label('first_name', 'FirtsName', ['class' => 'sr-only']) }}
-      {{ Form::text('first_name', null, ['class' => 'form-control', 'placeholder' => 'Firstname', 'autofocus' => '']) }}
-
-
-      {{ Form::label('last_name', 'Last Name', ['class' => 'sr-only']) }}
-      {{ Form::text('last_name', null, ['class' => 'form-control', 'placeholder' => 'Last Name', 'autofocus' => '']) }}
+        {{ Form::label('first_name', 'FirtsName', ['class' => 'sr-only']) }}
+        {{ Form::text('first_name', null, ['class' => 'form-control spaceBox', 'placeholder' => 'Firstname', 'autofocus' => '']) }}
 
 
-      {{ Form::label('username', 'Username', ['class' => 'sr-only']) }}
-      {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
+        {{ Form::label('last_name', 'Last Name', ['class' => 'sr-only']) }}
+        {{ Form::text('last_name', null, ['class' => 'form-control spaceBox', 'placeholder' => 'Last Name', 'autofocus' => '']) }}
 
-      {{Form::text('email', null,['class' => 'form-control', 'placeholder' => 'Email', 'autofocus' => ''])}}
 
-      {{ Form::label('password', 'Password', ['class' => 'sr-only']) }}
-      {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
+        {{ Form::label('username', 'Username', ['class' => 'sr-only']) }}
+        {{ Form::text('username', null, ['class' => 'form-control spaceBox', 'placeholder' => 'Username', 'autofocus' => '']) }}
 
-      <p>
-        <input type="submit" value="Register" class="btn btn-success">
-      </p>
-    {{ Form::close() }}
-    </div>
+        {{Form::text('email', null,['class' => 'form-control spaceBox', 'placeholder' => 'Email', 'autofocus' => ''])}}
+
+        {{ Form::label('password', 'Password', ['class' => 'sr-only']) }}
+        {{ Form::password('password', ['class' => 'form-control spaceBox', 'placeholder' => 'Password']) }}
+
+        <p>
+          <input type="submit" value="Register" class="btn btn-success col-md-12 spaceBox">
+        </p>
+      {{ Form::close() }}
+      </div>
   </div>
   <script src="//code.jquery.com/jquery.js"></script>
   <script src="//netdna.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

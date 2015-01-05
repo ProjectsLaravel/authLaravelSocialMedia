@@ -7,6 +7,7 @@
   <title>AuthLaravelSimple</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
   <link href="{{ asset('css/dash.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/helper.css') }}" rel="stylesheet">
   <style>
   @import url(//fonts.googleapis.com/css?family=Lato:700);
   </style>

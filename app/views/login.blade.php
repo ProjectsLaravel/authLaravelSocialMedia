@@ -4,7 +4,8 @@
   <meta charset="UTF-8">
   <title>Authenticate with Laravel 4.2</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  {{ HTML::style('assets/css/signin.css') }}
+  <link href="{{ asset('css/login.css') }}" rel="stylesheet">
+  <link href="{{ asset('css/helper.css') }}" rel="stylesheet">
 </head>
 <body>
   <div class="container">
@@ -18,7 +19,14 @@
       </div>
       @endif
 
-      <h2 class="form-signin-heading">Log in</h2>
+      <h2 class="form-signin-heading">AuthLaravelSocialMedia</h2>
+
+      <a class="btn btn-info col-md-12 spaceBox" href="login/fb">
+        <i class=""></i> Sign in with Facebook
+      </a>
+      <a class="btn btn-info col-md-12 spaceBox" href="login/tw">
+        <i class=""></i> Sign in with Twitter
+      </a>
 
       {{ Form::label('username', 'Username', ['class' => 'sr-only']) }}
       {{ Form::text('username', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
@@ -35,15 +43,9 @@
       {{ Form::submit('Log in', ['class' => 'btn btn-primary btn-block']) }}
 
       {{ Form::close() }}
-      <a class="btn btn-info" href="login/fb">
-        <i class=""></i> Sign in with Facebook
-      </a>
-      <a class="btn btn-info" href="login/tw">
-        <i class=""></i> Sign in with twitter
-      </a>
 
-      <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Create User</a>
-      <a class="btn btn-success" href="{{ action('UserController@showPassRecovery') }}">Forget Password?</a>
+      <a class="btn btn-success col-md-12 spaceBox" href="{{ action('AuthController@registerUser') }}">Create User</a>
+      <a class="btn btn-success col-md-12 spaceBox" href="{{ action('UserController@showPassRecovery') }}">Forget Password?</a>
     </div>
   </div>
   <script src="//code.jquery.com/jquery.js"></script>
