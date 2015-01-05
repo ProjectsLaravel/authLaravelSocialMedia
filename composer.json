@@ -8,7 +8,8 @@
 		"laravel/framework": "4.2.*",
 		"way/generators": "~2.0",
 		"codesleeve/laravel-stapler": "1.0.*",
-		"facebook/php-sdk": "~3.2"
+		"facebook/php-sdk": "~3.2",
+		"philo/laravel-twitter": "dev-master"
 	},
 	"autoload": {
 		"classmap": [
@@ -36,5 +37,5 @@
 	"config": {
 		"preferred-install": "dist"
 	},
-	"minimum-stability": "stable"
+	"minimum-stability": "dev"
 }

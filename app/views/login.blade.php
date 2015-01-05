@@ -38,6 +38,9 @@
       <a class="btn btn-info" href="login/fb">
         <i class=""></i> Sign in with Facebook
       </a>
+      <a class="btn btn-info" href="login/tw">
+        <i class=""></i> Sign in with twitter
+      </a>
 
       <a class="btn btn-success" href="{{ action('AuthController@registerUser') }}">Create User</a>
       <a class="btn btn-success" href="{{ action('UserController@showPassRecovery') }}">Forget Password?</a>

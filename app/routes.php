@@ -21,6 +21,12 @@ Route::post('password/reset/{token}', ['as' => 'resetPass', 'uses' => 'UserContr
 Route::get('login/fb', 'UserController@afterFacebook' );
 Route::get('login/fb/callback', 'UserController@loginFacebook' );
 
+Route::get('login/tw', 'UserController@afterTwitter' );
+Route::get('login/tw/callback', 'UserController@loginTwitter' );
+
+
+
+
 /*private routes only for users auth*/
 Route::group(['before' => 'auth'], function()
 {

@@ -156,4 +156,54 @@ class UserController extends BaseController {
     return Redirect::to('dash')->with('message', 'Logged in with Facebook');
   }
 
+  public function afterTwitter()
+  {
+    $tokens = Twitter::oAuthRequestToken();
+
+    // Redirect to twitter
+    Twitter::oAuthAuthenticate(array_get($tokens, 'oauth_token'));
+    exit;
+  }
+
+  public function loginTwitter()
+  {
+    $token = Input::get('oauth_token');
+
+    // Verifier token
+    $verifier = Input::get('oauth_verifier');
+
+    // Request access token
+    $accessToken = Twitter::oAuthAccessToken($token, $verifier);
+
+    $profile = Profile::whereUid($accessToken['user_id'])->first();
+    if (empty($profile)) {
+
+      $user = new User;
+      $user->first_name = $accessToken['screen_name'];
+      //$user->last_name = $me['last_name'];
+      $user->username = $accessToken['screen_name'];
+      $user->password = $accessToken['screen_name'];
+      //$user->email = $me['email'];
+      //$user->avatar = 'http://graph.facebook.com/'.$me['id'].'/picture';
+
+      $user->save();
+
+      $profile = new Profile();
+      $profile->uid = $accessToken['user_id'];
+      $profile->username = $accessToken['screen_name'];
+      $profile = $user->profiles()->save($profile);
+
+    }
+
+    $profile->access_token = $accessToken['oauth_token'];
+    $profile->save();
+
+    $user = $profile->user;
+
+    Auth::login($user);
+
+    return Redirect::to('dash')->with('message', 'Logged in with twitter');
+
+  }
+
 }

@@ -29,3 +29,9 @@ php artisan stapler:fasten users avatar
 composer require facebook/php-sdk
 php artisan migrate:make create_profiles_table
 php artisan migrate:refresh
+
+"philo/laravel-twitter": "dev-master"
+"minimum-stability": "dev"
+composer update
+
+php artisan config:publish --path=philo/twitter philo/twitter
