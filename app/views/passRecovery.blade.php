@@ -20,7 +20,7 @@
       {{ Form::open(['route' => 'sendMailRecovery', 'method' => 'POST', 'role' => 'form']) }}
 
       {{ Form::label('email', 'Email', ['class' => 'btn btn-info col-md-12 spaceBox']) }}
-      {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
+      {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Your Email', 'autofocus' => '']) }}
 
       {{ Form::submit('Recovery my password',['class' => 'btn btn-primary btn-block spaceBox']) }}
 

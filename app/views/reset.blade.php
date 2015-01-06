@@ -23,13 +23,13 @@
       {{ Form::open(array('route' => array('resetPass', $token)))  }}
 
         {{ Form::label('email', 'Email',['class' => 'btn btn-info col-md-12 spaceBox']) }}
-        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Username', 'autofocus' => '']) }}
+        {{ Form::text('email', null, ['class' => 'form-control', 'placeholder' => 'Your Email', 'autofocus' => '']) }}
 
         {{ Form::label('password', 'Password', ['class' => 'btn btn-info col-md-12 spaceBox']) }}
-        {{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'Password', 'autofocus' => '']) }}
+        {{ Form::text('password', null, ['class' => 'form-control', 'placeholder' => 'New Password', 'autofocus' => '']) }}
 
         {{ Form::label('password_confirmation', 'Password confirm', ['class' => 'btn btn-info col-md-12 spaceBox']) }}
-        {{ Form::text('password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'Password Confirm', 'autofocus' => '']) }}
+        {{ Form::text('password_confirmation', null, ['class' => 'form-control', 'placeholder' => 'New Password Confirm', 'autofocus' => '']) }}
 
         {{ Form::hidden('token', $token) }}
 

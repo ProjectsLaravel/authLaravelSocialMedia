@@ -1,6 +1,9 @@
 <?php
-
-
+/*test views*/
+Route::get('welcome', function()
+{
+	return View::make('emails/welcome');
+});
 
 /*Controls of auth*/
 Route::get('login', 'AuthController@showLogin');
