@@ -1,4 +1,4 @@
-<div class="col-md-4 col-md-offset-4">
+<div class="col-md-4 col-md-offset-4 marginTop">
     <img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" >
 
     {{ Form::open(['route' => 'uploadImage', 'method' => 'POST', 'files' => true,'role' => 'form']) }}

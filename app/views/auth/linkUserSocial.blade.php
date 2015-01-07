@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AuthLaravelSimple</title>
   <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
   <link href="{{ asset('css/dash.css') }}" rel="stylesheet">
   <link href="{{ asset('css/helper.css') }}" rel="stylesheet">
   <style>
@@ -71,13 +72,34 @@
 
         </div>
 
-        
+        <div id="updateUser" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
+          @include('auth/dashUpdateUser')
+        </div>
 
         <div id="linkUserSocial" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="" >
           @if (isset($socialNetworking))
-			    @foreach ($socialNetworking as $social)
-			    <p>Social {{ $social->name_provider }}</p>
-				@endforeach
+      		<section class="col-md-4 col-md-offset-4 marginTop">
+      			<article>
+      				<figure>
+      					<img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" alt="">
+      				</figure>
+      			</article>
+      			<article>
+      				<ul>
+      					@foreach ($socialNetworking as $social)
+					    
+					    @if ($social->name_provider === "facebook")
+						    <li><i class="fa fa-facebook">{{ $social->name_provider }}</i></li>
+						@else
+						    <li><i class="fa fa-twitter">{{ $social->name_provider }}</i></li>
+						@endif
+
+						@endforeach
+      				</ul>
+      				
+      			</article>
+      		</section>
+			    
 			@else
 			    no social
 			@endif
