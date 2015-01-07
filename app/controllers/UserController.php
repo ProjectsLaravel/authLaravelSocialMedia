@@ -24,12 +24,6 @@ class UserController extends BaseController {
 
   }
 
-  public function account()
-  {
-    $user = Auth::user();
-    return View::make('users/account',compact('user'));
-  }
-
   public function updateUser()
   {
     $id = Input::get('id');
@@ -213,8 +207,9 @@ class UserController extends BaseController {
 
   public function getSocialNetworking()
   {
-    
-    var_dump(Auth::user()->id);
+    $results = DB::table('profiles')->where('user_id', Auth::user()->id)->get();
+    //var_dump($results);
+    return View::make('auth/linkUserSocial')->with('socialNetworking',$results);
   }
 
 }
