@@ -142,6 +142,7 @@ class UserController extends BaseController {
       $profile = new Profile();
       $profile->uid = $uid;
       $profile->username = $me['first_name'];
+      $profile->name_provider = 'facebook';
       $profile = $user->profiles()->save($profile);
 
       /*Mail::send('emails.welcomeFacebook', array('first_name'=>$me['first_name'],'last_name'=>$me['last_name']), function($message){
@@ -194,6 +195,7 @@ class UserController extends BaseController {
       $profile = new Profile();
       $profile->uid = $accessToken['user_id'];
       $profile->username = $accessToken['screen_name'];
+      $profile->name_provider = 'twitter';
       $profile = $user->profiles()->save($profile);
 
     }
@@ -209,4 +211,30 @@ class UserController extends BaseController {
 
   }
 
+  public function getSocialNetworking()
+  {
+    
+    var_dump(Auth::user()->id);
+  }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

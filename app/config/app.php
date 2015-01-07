@@ -124,6 +124,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Codesleeve\LaravelStapler\LaravelStaplerServiceProvider',
 		'Philo\Twitter\TwitterServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 
 	),
 

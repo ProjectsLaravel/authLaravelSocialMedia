@@ -41,5 +41,5 @@ Route::group(['before' => 'auth'], function()
 
 	Route::post('uploadImage', ['as' => 'uploadImage', 'uses' => 'UserController@uploadImage' ] );
 
-	//Route::post('uploadImage', 'UserController@uploadImage');
+	Route::get('showSocialNetworking', 'UserController@getSocialNetworking' );
 });

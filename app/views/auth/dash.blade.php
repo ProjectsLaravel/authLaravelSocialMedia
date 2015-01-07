@@ -30,7 +30,7 @@
             <li><a href="#">Dashboard</a></li>
             <li><a href="#">Settings</a></li>
             <li>
-              <a class="navbar-collapse collapse">
+              <div class="navbar-collapse collapse">
                 <div>
                   @if (Auth::check())
                   <ul class="nav navbar-nav pull-right">
@@ -40,14 +40,14 @@
                       </a>
                       <ul class="dropdown-menu">
 
-                        <li><div onclick="showView('updateUser','ocultar')">Editar usuario</li>
+                        <li><a onclick="showView('updateUser','ocultar')">Editar usuario</a></li>
                         <li><a href="{{ action('AuthController@logout') }}">Salir</a></li>
                       </ul>
                     </li>
                   </ul>
                   @endif
                 </div>
-              <a>
+              <div>
             </li>
 
           </ul>
@@ -64,7 +64,7 @@
           <ul class="nav nav-sidebar">
             <li class="active"><a href="#">Dashboard <span class="sr-only">(current)</span></a></li>
             <li><a href="#">Blog</a></li>
-            <li><a href="#">Social Networking</a></li>
+            <li><a href="{{ action('UserController@getSocialNetworking') }}" onclick="showView('linkUserSocial','ocultar')">Social Networking</a></li>
             <li><a href="#">favorites</a></li>
             <li><a href="#">Recommended</a></li>
           </ul>
@@ -104,37 +104,12 @@
         </div>
 
         <div id="updateUser" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
-          <div class="col-md-4 col-md-offset-4">
-            <img class="img-circle" src="{{asset(Auth::user()->avatar->url('thumb')) }}" >
-
-            {{ Form::open(['route' => 'uploadImage', 'method' => 'POST', 'files' => true,'role' => 'form']) }}
-              {{ Form::hidden('id', Auth::user()->id ) }}
-              {{ Form::file('avatar') }}
-              <input type="submit" value="Subir imagen" class="btn btn-success">
-            {{ Form::close() }}
-
-            {{ Form::open(['route' => 'updateUser', 'method' => 'POST', 'role' => 'form']) }}
-
-              {{ Form::hidden('id', Auth::user()->id ) }}
-
-              {{ Form::label('first_name', 'FirtsName', ['class' => 'sr-only']) }}
-              {{ Form::text('first_name', Auth::user()->first_name , ['class' => 'form-control', 'placeholder' => 'Firstname', 'autofocus' => '']) }}
-
-
-              {{ Form::label('last_name', 'Last Name', ['class' => 'sr-only']) }}
-              {{ Form::text('last_name', Auth::user()->last_name , ['class' => 'form-control', 'placeholder' => 'Last Name', 'autofocus' => '']) }}
-
-              {{Form::text('email', Auth::user()->email ,['class' => 'form-control', 'placeholder' => 'Email', 'autofocus' => ''])}}
-
-              {{ Form::label('password', 'Password', ['class' => 'sr-only']) }}
-              {{ Form::password('password', ['class' => 'form-control', 'placeholder' => 'Password']) }}
-
-            <p>
-              <input type="submit" value="Actualizar" class="btn btn-success">
-            </p>
-            {{ Form::close() }}
+          @include('auth/dashUpdateUser')
         </div>
-      </div>
+
+        <div id="linkUserSocial" class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 ocultar" style="display:none" >
+          @include('auth/linkUserSocial')
+        </div>
 
       </div>
     </div>
